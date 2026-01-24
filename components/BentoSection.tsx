@@ -49,7 +49,7 @@ const BentoSection: React.FC = () => {
                     <div className="relative group/profile">
                         <div className="absolute inset-0 rounded-full bg-gradient-to-br from-accent-400/20 to-accent-900/20 blur-xl group-hover:blur-2xl transition-all duration-300" />
                         <img 
-                            src="/profile/profile.png" 
+                            src="/profile/profile.jpg" 
                             alt="Russelle Roxas" 
                             className="relative w-20 h-20 rounded-full object-cover border-2 border-white/10 group-hover:border-accent-400/50 transition-all duration-300 group-hover:scale-105 shadow-lg"
                         />
