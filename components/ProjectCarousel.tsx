@@ -3,7 +3,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { FEATURED_PROJECTS } from '../constants';
-import { ExternalLink, ArrowRight } from 'lucide-react';
+import { ExternalLink, ArrowRight, Lock } from 'lucide-react';
 import { TextReveal } from './TextReveal';
 
 const ProjectCarousel: React.FC = () => {
@@ -113,6 +113,43 @@ const ProjectCarousel: React.FC = () => {
         ref={containerRef}
         className="sticky top-0 flex h-screen items-center overflow-hidden"
       >
+        {/* Under Construction Overlay */}
+        <div className="absolute inset-0 z-50 flex items-center justify-center backdrop-blur-md bg-black/40">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            className="flex flex-col items-center gap-6 text-center"
+          >
+            <motion.div
+              animate={{ 
+                rotate: [0, -10, 10, -10, 10, 0],
+                scale: [1, 1.1, 1]
+              }}
+              transition={{ 
+                duration: 2,
+                repeat: Infinity,
+                repeatDelay: 3
+              }}
+              className="relative"
+            >
+              <Lock className="w-16 h-16 md:w-20 md:h-20 text-accent-400" />
+              <motion.div
+                className="absolute inset-0 bg-accent-400/20 rounded-full blur-xl"
+                animate={{ scale: [1, 1.2, 1] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              />
+            </motion.div>
+            <div className="space-y-2">
+              <h2 className="text-2xl md:text-4xl font-light text-white tracking-tight uppercase">
+                Under Construction
+              </h2>
+              <p className="text-sm md:text-base text-zinc-400 font-mono tracking-wider">
+                This section is currently being developed
+              </p>
+            </div>
+          </motion.div>
+        </div>
         
         {/* Section Label */}
         <div className="absolute top-12 left-8 md:left-24 z-20 mix-blend-difference">
