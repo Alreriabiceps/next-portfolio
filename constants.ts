@@ -276,6 +276,43 @@ export const SKILLS: Skill[] = [
   { name: "Jest / Testing", category: "Tools", level: 85, icon: JestIcon },
 ];
 
+export const EXPERTISE_CATEGORIES: {
+  category: Skill['category'];
+  title: string;
+  description: string;
+}[] = [
+  {
+    category: 'Frontend',
+    title: 'Interface Engineering',
+    description: 'Responsive interfaces, motion systems, and performance-minded UI built with modern React ecosystems.',
+  },
+  {
+    category: 'Backend',
+    title: 'Server & APIs',
+    description: 'Scalable services, authentication flows, and API layers that support real product logic and integrations.',
+  },
+  {
+    category: 'Database',
+    title: 'Data Layer',
+    description: 'Schema design, query optimization, and reliable persistence across SQL and document stores.',
+  },
+  {
+    category: 'Mobile',
+    title: 'Cross-Platform',
+    description: 'Mobile experiences that share logic with web while staying native-feeling on device.',
+  },
+  {
+    category: 'Cloud',
+    title: 'Cloud & Deploy',
+    description: 'Production hosting, cloud primitives, and deployment paths that keep releases repeatable.',
+  },
+  {
+    category: 'Tools',
+    title: 'Workflow & Quality',
+    description: 'Version control, build tooling, containers, and testing practices that keep delivery steady.',
+  },
+];
+
 export const EXPERIENCE: Experience[] = [
   {
     id: 6,

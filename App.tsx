@@ -9,6 +9,7 @@ import BlogPage from './components/BlogPage';
 import TelemetryPage from './components/TelemetryPage';
 import ProjectCarousel from './components/ProjectCarousel';
 import WebDesignSection from './components/WebDesignSection';
+import ExpertiseSection from './components/ExpertiseSection';
 import { TextReveal, GlitchText } from './components/TextReveal';
 import { ScrollReveal } from './components/ScrollReveal';
 import { EXPERIENCE, PORTFOLIO_OWNER, PORTFOLIO_ROLE } from './constants';
@@ -186,71 +187,7 @@ function App() {
 
               <BentoSection />
 
-              {/* EXPERTISE SECTION */}
-              <section id="expertise" className="py-40 px-6 relative">
-                <div className="max-w-7xl mx-auto">
-                  <ScrollReveal mode="dolly">
-                    <div className="mb-20 text-center">
-                      <h3 className="text-zinc-300 font-mono text-sm tracking-[0.35em] uppercase mb-4">Full Stack Mastery</h3>
-                      <TextReveal text="Expertise" className="text-5xl md:text-7xl font-light tracking-tighter text-white" />
-                      <p className="text-zinc-400 text-sm mt-6 max-w-2xl mx-auto font-light leading-relaxed">
-                        Proficient in building end-to-end solutions from pixel-perfect interfaces to robust server architectures. 
-                        Specialized in creating seamless, scalable applications that deliver exceptional user experiences.
-                      </p>
-                    </div>
-                  </ScrollReveal>
-                  
-                  <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <ScrollReveal mode="cinematic" delay={0.1}>
-                      <div className="p-8 border border-white/5 hover:border-accent-400/30 transition-all bg-zinc-900/20 rounded-sm relative group overflow-hidden h-full">
-                        <div className="absolute top-0 left-0 w-1 h-full bg-accent-400 scale-y-0 group-hover:scale-y-100 transition-transform duration-500 ease-out" />
-                        <div className="absolute top-0 right-0 w-20 h-20 bg-accent-400/5 rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                        <h3 className="text-xl font-light text-white mb-3 group-hover:text-accent-400 transition-colors">Frontend Engineering</h3>
-                        <p className="text-zinc-300 leading-relaxed font-light text-sm">
-                          Expert in crafting responsive, interactive user interfaces with React, Next.js, and modern CSS frameworks. 
-                          I build fast, accessible, and visually stunning experiences that users love.
-                        </p>
-                      </div>
-                    </ScrollReveal>
-                    
-                    <ScrollReveal mode="cinematic" delay={0.2}>
-                      <div className="p-8 border border-white/5 hover:border-accent-400/30 transition-all bg-zinc-900/20 rounded-sm relative group overflow-hidden h-full">
-                        <div className="absolute top-0 left-0 w-1 h-full bg-accent-400 scale-y-0 group-hover:scale-y-100 transition-transform duration-500 ease-out" />
-                        <div className="absolute top-0 right-0 w-20 h-20 bg-accent-400/5 rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                        <h3 className="text-xl font-light text-white mb-3 group-hover:text-accent-400 transition-colors">Backend Development</h3>
-                        <p className="text-zinc-300 leading-relaxed font-light text-sm">
-                          Skilled in building scalable server-side applications with Node.js, Express, and RESTful APIs. 
-                          I architect robust systems that handle complex business logic and high traffic efficiently.
-                        </p>
-                      </div>
-                    </ScrollReveal>
-                    
-                    <ScrollReveal mode="cinematic" delay={0.3}>
-                      <div className="p-8 border border-white/5 hover:border-accent-400/30 transition-all bg-zinc-900/20 rounded-sm relative group overflow-hidden h-full">
-                        <div className="absolute top-0 left-0 w-1 h-full bg-accent-400 scale-y-0 group-hover:scale-y-100 transition-transform duration-500 ease-out" />
-                        <div className="absolute top-0 right-0 w-20 h-20 bg-accent-400/5 rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                        <h3 className="text-xl font-light text-white mb-3 group-hover:text-accent-400 transition-colors">Database & APIs</h3>
-                        <p className="text-zinc-300 leading-relaxed font-light text-sm">
-                          Proficient in designing and managing databases with MongoDB and PostgreSQL. 
-                          I create efficient data models and optimize queries for performance and reliability.
-                        </p>
-                      </div>
-                    </ScrollReveal>
-                    
-                    <ScrollReveal mode="cinematic" delay={0.4}>
-                      <div className="p-8 border border-white/5 hover:border-accent-400/30 transition-all bg-zinc-900/20 rounded-sm relative group overflow-hidden h-full">
-                        <div className="absolute top-0 left-0 w-1 h-full bg-accent-400 scale-y-0 group-hover:scale-y-100 transition-transform duration-500 ease-out" />
-                        <div className="absolute top-0 right-0 w-20 h-20 bg-accent-400/5 rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                        <h3 className="text-xl font-light text-white mb-3 group-hover:text-accent-400 transition-colors">UI/UX Design</h3>
-                        <p className="text-zinc-300 leading-relaxed font-light text-sm">
-                          Creating intuitive, user-centered designs that balance aesthetics with functionality. 
-                          I transform complex requirements into clean, engaging interfaces that enhance user experience.
-                        </p>
-                      </div>
-                    </ScrollReveal>
-                  </div>
-                </div>
-              </section>
+              <ExpertiseSection />
 
               <ProjectCarousel />
 
