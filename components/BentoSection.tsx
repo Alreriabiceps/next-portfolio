@@ -66,7 +66,7 @@ const BentoSection: React.FC = () => {
                     Building the future, one line of code at a time. I craft pixel-perfect interfaces 
                     and bulletproof backends with equal passion. Whether it's breathing life into React 
                     components or architecting scalable Node.js systems, I turn complex problems into 
-                    elegant solutions. When I'm not debugging, I'm probably optimizing—performance 
+                    elegant solutions. When I'm not debugging, I'm probably optimizing-performance 
                     isn't just a feature, it's an obsession.
                 </p>
             </div>
@@ -80,13 +80,13 @@ const BentoSection: React.FC = () => {
                         Available for freelance projects, consulting, and long-term collaborations.
                     </p>
                     <div className="flex flex-wrap gap-2">
-                        <span className="text-[10px] text-accent-400 bg-accent-900/20 border border-accent-900/30 px-2 py-1 rounded font-mono">
-                            React • Next.js
+                        <span className="text-xs text-accent-400 bg-accent-900/20 border border-accent-900/30 px-2.5 py-1.5 rounded font-mono">
+                            React / Next.js
                         </span>
-                        <span className="text-[10px] text-accent-400 bg-accent-900/20 border border-accent-900/30 px-2 py-1 rounded font-mono">
-                            Node.js • TypeScript
+                        <span className="text-xs text-accent-400 bg-accent-900/20 border border-accent-900/30 px-2.5 py-1.5 rounded font-mono">
+                            Node.js / TypeScript
                         </span>
-                        <span className="text-[10px] text-accent-400 bg-accent-900/20 border border-accent-900/30 px-2 py-1 rounded font-mono">
+                        <span className="text-xs text-accent-400 bg-accent-900/20 border border-accent-900/30 px-2.5 py-1.5 rounded font-mono">
                             Full Stack
                         </span>
                     </div>
@@ -164,7 +164,7 @@ const BentoSection: React.FC = () => {
                     </div>
                 </div>
                 <div className="mt-4 pt-3 border-t border-white/10">
-                    <p className="text-[10px] text-zinc-500 font-mono uppercase tracking-wider">Remote • On-site</p>
+                    <p className="text-xs text-zinc-500 font-mono uppercase tracking-wider">Remote / On-site</p>
                 </div>
              </div>
           </BentoCard>
@@ -198,15 +198,15 @@ const BentoSection: React.FC = () => {
             <div className="grid grid-cols-3 gap-4 h-full items-center divide-x divide-white/5">
                 <div className="text-center px-2 group-hover:scale-105 transition-transform">
                     <h4 className="text-3xl font-light text-white">05</h4>
-                    <p className="text-[10px] text-zinc-300 uppercase mt-2 tracking-widest">Years</p>
+                    <p className="text-xs text-zinc-300 uppercase mt-2 tracking-wider">Years</p>
                 </div>
                 <div className="text-center px-2 group-hover:scale-105 transition-transform delay-75">
                     <h4 className="text-3xl font-light text-white">52</h4>
-                    <p className="text-[10px] text-zinc-300 uppercase mt-2 tracking-widest">Projects</p>
+                    <p className="text-xs text-zinc-300 uppercase mt-2 tracking-wider">Projects</p>
                 </div>
                 <div className="text-center px-2 group-hover:scale-105 transition-transform delay-150">
                     <h4 className="text-3xl font-light text-white">100<span className="text-sm">%</span></h4>
-                    <p className="text-[10px] text-zinc-300 uppercase mt-2 tracking-widest">Uptime</p>
+                    <p className="text-xs text-zinc-300 uppercase mt-2 tracking-wider">Uptime</p>
                 </div>
             </div>
           </BentoCard>

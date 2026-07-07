@@ -1,204 +1,115 @@
-
-
 import React, { useRef, useEffect, useState } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { FEATURED_PROJECTS } from '../constants';
-import { ExternalLink, ArrowRight, Lock } from 'lucide-react';
+import { WEB_APP_PROJECTS } from '../constants';
+import { ArrowRight, Link2, Lock } from 'lucide-react';
 import { TextReveal } from './TextReveal';
+import type { Project } from '../types';
 
 const ProjectCarousel: React.FC = () => {
   const targetRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const carouselRef = useRef<HTMLDivElement>(null);
+  const [scrollDistance, setScrollDistance] = useState(0);
+  const [sectionHeight, setSectionHeight] = useState<number | string>('240vh');
   const progress = useMotionValue(0);
-  const smoothProgress = useSpring(progress, { stiffness: 100, damping: 30 });
-  const [isCarouselComplete, setIsCarouselComplete] = useState(false);
-  const [isCentered, setIsCentered] = useState(false);
+  const smoothProgress = useSpring(progress, { stiffness: 100, damping: 30, mass: 0.2 });
 
-  const x = useTransform(smoothProgress, [0, 1], ["0%", "-75%"]);
+  const x = useTransform(smoothProgress, [0, 1], [0, -scrollDistance]);
 
-  // Check if carousel section is centered (sticky at top) before allowing carousel scroll
+  // Size the pinned section from the actual horizontal overflow, like a ScrollTrigger scrub.
   useEffect(() => {
-    const checkCentered = () => {
+    let scrollLength = 0;
+
+    const measureScroll = () => {
+      const section = targetRef.current;
       const container = containerRef.current;
-      if (!container) return;
+      const carousel = carouselRef.current;
+      if (!section || !container || !carousel) return;
 
-      const rect = container.getBoundingClientRect();
-      // Check if the sticky container is at the top (centered position)
-      // Allow a small threshold (50px) for smooth transitions
-      const isAtTop = rect.top >= 0 && rect.top <= 50;
-      setIsCentered(isAtTop);
+      const overflowWidth = Math.max(0, carousel.scrollWidth - container.clientWidth);
+      const viewportHeight = window.innerHeight || container.clientHeight;
+      scrollLength = Math.max(viewportHeight * 0.75, overflowWidth);
+
+      setScrollDistance(overflowWidth);
+      setSectionHeight(viewportHeight + scrollLength);
+      updateProgress();
     };
 
-    checkCentered();
-    window.addEventListener('scroll', checkCentered, { passive: true });
-    window.addEventListener('resize', checkCentered, { passive: true });
+    const updateProgress = () => {
+      const section = targetRef.current;
+      if (!section) return;
+
+      const rect = section.getBoundingClientRect();
+      const nextProgress = scrollLength > 0
+        ? Math.min(Math.max(-rect.top / scrollLength, 0), 1)
+        : 0;
+
+      progress.set(nextProgress);
+    };
+
+    measureScroll();
+
+    const resizeObserver = typeof ResizeObserver !== 'undefined'
+      ? new ResizeObserver(measureScroll)
+      : null;
+
+    if (resizeObserver) {
+      if (containerRef.current) resizeObserver.observe(containerRef.current);
+      if (carouselRef.current) resizeObserver.observe(carouselRef.current);
+    }
+
+    const refreshTimer = window.setTimeout(measureScroll, 250);
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    window.addEventListener('resize', measureScroll);
 
     return () => {
-      window.removeEventListener('scroll', checkCentered);
-      window.removeEventListener('resize', checkCentered);
+      resizeObserver?.disconnect();
+      window.clearTimeout(refreshTimer);
+      window.removeEventListener('scroll', updateProgress);
+      window.removeEventListener('resize', measureScroll);
     };
-  }, []);
-
-  // Handle wheel events and prevent page scroll when carousel is active
-  useEffect(() => {
-    // Only activate carousel scroll when section is centered (sticky at top)
-    if (!isCentered) return;
-
-    const handleWheel = (e: WheelEvent) => {
-      const currentProgress = progress.get();
-      const scrollSensitivity = 0.003;
-      const delta = e.deltaY * scrollSensitivity;
-      const newProgress = Math.max(0, Math.min(1, currentProgress + delta));
-      
-      // Scrolling down
-      if (e.deltaY > 0) {
-        // If progress >= 1 (100% - fully scrolled), allow page scroll to next section
-        if (currentProgress >= 1) {
-          return; // Allow page scroll
-        }
-        // Otherwise, prevent page scroll and update carousel
-        e.preventDefault();
-        e.stopPropagation();
-        progress.set(newProgress);
-      } 
-      // Scrolling up
-      else if (e.deltaY < 0) {
-        // If progress > 0, prevent page scroll and scroll carousel back to start
-        if (currentProgress > 0) {
-          e.preventDefault();
-          e.stopPropagation();
-          progress.set(newProgress);
-        }
-        // If progress <= 0, allow page scroll to previous section
-        // (no action needed, just return to allow normal scroll)
-      }
-    };
-
-    const handleTouchMove = (e: TouchEvent) => {
-      const currentProgress = progress.get();
-      // Prevent touch scroll if carousel is not at boundaries (0 or 1)
-      if (currentProgress > 0 && currentProgress < 1) {
-        e.preventDefault();
-      }
-    };
-
-    // Add listener to window to catch all scroll events when centered
-    window.addEventListener('wheel', handleWheel, { passive: false });
-    window.addEventListener('touchmove', handleTouchMove, { passive: false });
-
-    return () => {
-      window.removeEventListener('wheel', handleWheel);
-      window.removeEventListener('touchmove', handleTouchMove);
-    };
-  }, [isCentered, progress]);
-
-  // Update completion state - carousel is "complete" when it reaches 100%
-  useEffect(() => {
-    const unsubscribe = smoothProgress.on('change', (latest) => {
-      const wasComplete = isCarouselComplete;
-      const nowComplete = latest >= 0.99; // Consider complete at 99% to account for spring animation
-      
-      if (nowComplete !== wasComplete) {
-        setIsCarouselComplete(nowComplete);
-      }
-    });
-
-    return () => unsubscribe();
-  }, [smoothProgress, isCarouselComplete]);
+  }, [progress]);
   
   return (
-    <section ref={targetRef} id="featured" className="relative h-[200vh] bg-black">
+    <section ref={targetRef} id="apps" style={{ height: sectionHeight }} className="relative bg-black">
       <div 
         ref={containerRef}
-        className="sticky top-0 flex h-screen items-center overflow-hidden"
+        className="sticky top-0 flex h-screen flex-col overflow-hidden"
       >
-        {/* Under Construction Overlay */}
-        <div className="absolute inset-0 z-50 flex items-center justify-center backdrop-blur-md bg-black/40">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-            className="flex flex-col items-center gap-6 text-center"
-          >
-            <motion.div
-              animate={{ 
-                rotate: [0, -10, 10, -10, 10, 0],
-                scale: [1, 1.1, 1]
-              }}
-              transition={{ 
-                duration: 2,
-                repeat: Infinity,
-                repeatDelay: 3
-              }}
-              className="relative"
-            >
-              <Lock className="w-16 h-16 md:w-20 md:h-20 text-accent-400" />
-              <motion.div
-                className="absolute inset-0 bg-accent-400/20 rounded-full blur-xl"
-                animate={{ scale: [1, 1.2, 1] }}
-                transition={{ duration: 2, repeat: Infinity }}
-              />
-            </motion.div>
-            <div className="space-y-2">
-              <h2 className="text-2xl md:text-4xl font-light text-white tracking-tight uppercase">
-                Under Construction
-              </h2>
-              <p className="text-sm md:text-base text-zinc-400 font-mono tracking-wider">
-                This section is currently being developed
-              </p>
-            </div>
-          </motion.div>
-        </div>
-        
         {/* Section Label */}
         <div className="absolute top-12 left-8 md:left-24 z-20 mix-blend-difference">
-             <h3 className="text-zinc-300 font-mono text-xs tracking-[0.5em] uppercase mb-4 animate-pulse">Featured Operations</h3>
-             <TextReveal text="Mission Profiles" className="text-5xl md:text-7xl font-bold tracking-tighter text-white" />
+             <h3 className="text-zinc-300 font-mono text-sm tracking-[0.35em] uppercase mb-4 animate-pulse">Product Builds</h3>
+             <TextReveal text="Web Apps" className="text-5xl md:text-7xl font-bold tracking-tighter text-white" />
         </div>
 
-        <motion.div 
-          ref={carouselRef}
-          drag={isCentered ? "x" : false}
-          dragConstraints={{ left: 0, right: 0 }}
-          dragElastic={0.2}
-          dragMomentum={false}
-          onDrag={(event, info) => {
-            if (!isCentered) {
-              return;
-            }
-            
-            const container = containerRef.current;
-            const carousel = carouselRef.current;
-            if (!container || !carousel) return;
+        <div className="relative z-10 flex flex-1 items-center overflow-hidden">
+          <motion.div
+            ref={carouselRef}
+            style={{ x }}
+            aria-hidden="true"
+            className="flex w-max gap-16 px-8 md:px-24 will-change-transform select-none blur-[3px] opacity-50 pointer-events-none"
+          >
+            {WEB_APP_PROJECTS.map((project, i) => (
+              <Card key={project.id} project={project} index={i} />
+            ))}
+          </motion.div>
 
-            // Calculate the total scrollable width
-            // The carousel moves 75% of container width (from transform: -75%)
-            const containerWidth = container.offsetWidth;
-            const scrollableWidth = containerWidth * 0.75;
-            
-            // Get current drag delta (negative = left drag, positive = right drag)
-            const dragDelta = info.delta.x;
-            
-            // Convert drag delta to progress change
-            // Dragging left (negative delta) should increase progress
-            // Dragging right (positive delta) should decrease progress
-            const progressDelta = -dragDelta / scrollableWidth;
-            const currentProgress = progress.get();
-            const newProgress = Math.max(0, Math.min(1, currentProgress + progressDelta));
-            
-            progress.set(newProgress);
-          }}
-          style={{ x }} 
-          className="flex gap-16 px-8 md:px-24 will-change-transform cursor-grab active:cursor-grabbing select-none"
-        >
-          {FEATURED_PROJECTS.map((project, i) => (
-            <Card key={project.id} project={project} index={i} />
-          ))}
-        </motion.div>
+          <div className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center bg-black/25 backdrop-blur-[2px]">
+            <div className="flex flex-col items-center gap-5 border border-white/10 bg-black/50 px-10 py-8 text-center backdrop-blur-md sm:px-14 sm:py-10">
+              <div className="flex items-center gap-4 text-accent-400">
+                <Link2 size={28} strokeWidth={1.5} className="rotate-[-35deg]" />
+                <Lock size={30} strokeWidth={1.5} />
+              </div>
+              <div>
+                <p className="font-mono text-xs uppercase tracking-[0.35em] text-zinc-500">Web Apps</p>
+                <p className="mt-3 text-2xl font-light text-white sm:text-3xl">Still In Progress</p>
+              </div>
+            </div>
+          </div>
+        </div>
         
         {/* Scroll Progress Bar */}
-        <div className="absolute bottom-12 left-24 right-24 h-[1px] bg-zinc-800 z-20">
+        <div className="absolute bottom-12 left-8 right-8 md:left-24 md:right-24 h-[1px] bg-zinc-800 z-20">
              <motion.div 
                 style={{ scaleX: smoothProgress }} 
                 className="h-full bg-white origin-left shadow-[0_0_10px_white]"
@@ -209,7 +120,7 @@ const ProjectCarousel: React.FC = () => {
   );
 };
 
-const Card = ({ project, index }: { project: any, index: number }) => {
+const Card = ({ project, index }: { project: Project, index: number }) => {
   return (
     <div className="relative h-[60vh] w-[85vw] md:w-[60vw] md:h-[70vh] overflow-hidden bg-black border border-white/10 group flex-shrink-0">
       {/* Background with Parallax effect on hover/focus would be complex in horizontal scroll, 
@@ -236,13 +147,13 @@ const Card = ({ project, index }: { project: any, index: number }) => {
             <div className="flex flex-col items-start justify-between">
                 <div className="flex gap-2 mb-6 flex-wrap">
                     {project.tags.map((tag: string) => (
-                        <span key={tag} className="px-3 py-1 text-[10px] uppercase border border-white/20 bg-white/5 text-zinc-300 tracking-wider">
+                        <span key={tag} className="px-3 py-1.5 text-xs uppercase border border-white/20 bg-white/5 text-zinc-300 tracking-wider">
                             {tag}
                         </span>
                     ))}
                 </div>
                 <button className="flex items-center gap-3 text-sm uppercase tracking-[0.2em] text-white hover:text-accent-400 transition-colors group/btn">
-                    Execute Protocol <span className="bg-white text-black rounded-full p-1 group-hover/btn:rotate-45 transition-transform inline-flex"><ArrowRight size={14}/></span>
+                    View Build <span className="bg-white text-black rounded-full p-1 group-hover/btn:rotate-45 transition-transform inline-flex"><ArrowRight size={14}/></span>
                 </button>
             </div>
         </div>

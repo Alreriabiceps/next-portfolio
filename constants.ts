@@ -121,65 +121,137 @@ const JestIcon = ({ size = 16, className = "" }: { size?: number; className?: st
     React.createElement('path', { d: 'M8 12l2 2 4-4', stroke: 'currentColor', strokeWidth: '1.5', strokeLinecap: 'round', strokeLinejoin: 'round', fill: 'none' })
   );
 
-export const FEATURED_PROJECTS: Project[] = [
+export const WEB_APP_PROJECTS: Project[] = [
   {
     id: 101,
-    title: "Aether Lens",
-    description: "Augmented Reality interface for smart glasses built with WebXR and Three.js.",
-    tags: ["WebXR", "Three.js", "React"],
+    title: "Payment NGNair",
+    description: "A fintech platform for digital payments, POS management, merchant onboarding, customer operations, inventory tracking, and marketplace workflows.",
+    tags: ["Next.js", "NestJS", "GraphQL", "PostgreSQL", "FinTech"],
     link: "#",
-    image: "https://picsum.photos/800/600?grayscale&random=20"
+    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1200&q=80"
   },
   {
     id: 102,
-    title: "Quantum Ledger",
-    description: "Blockchain visualization tool processing 10k+ transactions per second in real-time.",
-    tags: ["Rust", "Wasm", "WebGL"],
+    title: "May Rights Ba Ako?",
+    description: "An AI legal rights analysis app that summarizes submitted cases and surfaces nearby lawyers, attorneys, government offices, and support resources.",
+    tags: ["Next.js", "Firebase", "AI", "LegalTech", "Case Analysis"],
     link: "#",
-    image: "https://picsum.photos/800/600?grayscale&random=21"
+    image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1200&q=80"
   },
   {
     id: 103,
-    title: "Cyber City",
-    description: "Procedural city generator using wave function collapse algorithm.",
-    tags: ["Algorithms", "Canvas API"],
+    title: "Rekomendito",
+    description: "A business finder and recommendation tool built for Byte Forward Hackathon, helping users discover relevant local businesses through smarter search flows.",
+    tags: ["React", "Express", "Node.js", "MongoDB", "REST API"],
     link: "#",
-    image: "https://picsum.photos/800/600?grayscale&random=22"
+    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80"
   },
   {
     id: 104,
-    title: "Neural Dreams",
-    description: "Interactive generative art platform powered by stable diffusion models.",
-    tags: ["AI", "Python", "React"],
+    title: "AGILA",
+    description: "A gamified learning assessment system with exams, real-time leaderboards, score multipliers, and interactive card mechanics for student engagement.",
+    tags: ["React", "Node.js", "Socket.io", "MongoDB", "Gamification"],
     link: "#",
-    image: "https://picsum.photos/800/600?grayscale&random=23"
+    image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1200&q=80"
   }
 ];
 
-export const PROJECTS: Project[] = [
+export const WEB_DESIGN_PROJECTS: Project[] = [
   {
-    id: 1,
-    title: "Nebula Dashboard",
-    description: "A real-time crypto analytics platform using WebSockets and D3.js for high-frequency data visualization.",
-    tags: ["React", "D3.js", "Node.js", "WebSockets"],
-    link: "#",
-    image: "https://picsum.photos/600/400?grayscale&random=1"
+    id: 201,
+    title: "1042 Star Radio FM",
+    description: "Radio station website with programming highlights, listen links, and mobile-friendly station branding.",
+    tags: ["Media", "Responsive", "Brand", "SEO"],
+    link: "https://1042-star-radio-fm.demo-previews.com/",
+    image: "https://images.unsplash.com/photo-1478737270239-2f02b77fc618?auto=format&fit=crop&w=1200&q=80"
   },
   {
-    id: 2,
-    title: "Synthetix AI",
-    description: "Generative AI content creation suite integrated with Gemini API for text-to-image and text-to-code workflows.",
-    tags: ["TypeScript", "Gemini API", "Next.js", "Python"],
-    link: "#",
-    image: "https://picsum.photos/600/400?grayscale&random=2"
+    id: 202,
+    title: "Kystarbeid AS",
+    description: "Norwegian diving company site for demanding offshore and underwater operations, with service clarity and professional presentation.",
+    tags: ["Diving", "Norway", "Corporate", "Responsive"],
+    link: "https://kystarbeid-as.demo-previews.com/",
+    image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?auto=format&fit=crop&w=1200&q=80"
   },
   {
-    id: 3,
-    title: "Void Commerce",
-    description: "Headless e-commerce solution with a 3D product configurator built using Three.js and React Fiber.",
-    tags: ["Three.js", "React Fiber", "GraphQL", "PostgreSQL"],
-    link: "#",
-    image: "https://picsum.photos/600/400?grayscale&random=3"
+    id: 203,
+    title: "Rokko AS",
+    description: "Professional company website with structured content, clear hierarchy, and polished presentation.",
+    tags: ["Corporate", "Web Design", "UX", "Mobile"],
+    link: "https://rokko-as.demo-previews.com/",
+    image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    id: 204,
+    title: "Cools North LLC",
+    description: "About-focused business page with company story, service context, and accessible responsive design.",
+    tags: ["About Page", "Local Business", "Responsive", "SEO"],
+    link: "https://cools-north-llc.demo-previews.com/about",
+    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    id: 205,
+    title: "MAVV Construction Services",
+    description: "Construction services site with project credibility, service sections, and inquiry-friendly layout.",
+    tags: ["Construction", "Services", "Lead Flow", "Mobile"],
+    link: "https://mavv-construction-services.demo-previews.com/",
+    image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    id: 206,
+    title: "Solventa AS",
+    description: "Business website with modern sections, service clarity, and performance-minded responsive build.",
+    tags: ["Business", "Corporate", "Responsive", "SEO"],
+    link: "https://solventa-as.demo-previews.com/",
+    image: "https://images.unsplash.com/photo-1559028012-481c04fa702d?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    id: 207,
+    title: "Taquitos Way",
+    description: "Hospitality-focused site with menu-led content, brand personality, and mobile-first browsing.",
+    tags: ["Hospitality", "Food", "Brand", "Mobile"],
+    link: "https://taquitos-way.demo-previews.com/",
+    image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    id: 208,
+    title: "MRDCB",
+    description: "Client website with structured service presentation, contact paths, and responsive UI polish.",
+    tags: ["Client Site", "Responsive", "UI Design", "SEO"],
+    link: "https://mrdcb.demo-previews.com/",
+    image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    id: 209,
+    title: "Hawk Cooling & Heating",
+    description: "HVAC supplies business site with service details, trust cues, and conversion-ready sections.",
+    tags: ["HVAC", "Local SEO", "Services", "Responsive"],
+    link: "https://hawk-cooling-and-heating-supplies-llc.demo-previews.com/",
+    image: "https://images.unsplash.com/photo-1581094794329-cd11f074f1cd?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    id: 210,
+    title: "PB Fernandez Construction",
+    description: "Construction services website with project showcase, service sections, and a professional client-facing layout.",
+    tags: ["Construction", "Services", "Responsive", "Lead Flow"],
+    link: "https://pb-fernandez-construction.demo-previews.com/",
+    image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    id: 211,
+    title: "Comfort Zone Gen. Contractor Co.",
+    description: "Metro Manila general contractor site with service coverage, trust sections, and mobile-ready presentation.",
+    tags: ["Construction", "Metro Manila", "Contractor", "Responsive"],
+    link: "https://comfort-zone-gen-contractor-co.demo-previews.com/",
+    image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    id: 212,
+    title: "Aasebø Betongentreprenør AS",
+    description: "Norwegian concrete contractor services page covering full-scope betong work, capabilities, and client-ready service presentation.",
+    tags: ["Concrete", "Norway", "Services", "Responsive"],
+    link: "https://aaseb-betongentreprenr-as.demo-previews.com/tjenester",
+    image: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1200&q=80"
   }
 ];
 
@@ -206,6 +278,22 @@ export const SKILLS: Skill[] = [
 
 export const EXPERIENCE: Experience[] = [
   {
+    id: 6,
+    role: "Software Engineer",
+    company: "Payment NGNair - US-Based FinTech Company",
+    period: "2025",
+    description: "Worked as a Full Stack Developer for Payment NGNair, a fintech platform focused on digital payments, POS management, marketplace solutions, and product distribution systems. Developed scalable web applications and backend services handling customer management, merchant onboarding, transaction processing, inventory tracking, and marketplace operations. Collaborated with cross-functional teams to build secure, high-performance financial solutions with modern web technologies and API-driven architecture. Contributed to improving user experience, system reliability, and real-time transaction workflows for merchants and customers.",
+    technologies: ["Next.js", "NestJS", "GraphQL", "TypeScript", "PostgreSQL", "React", "TailwindCSS", "REST API", "Payment Systems", "POS Systems", "Marketplace Systems", "Customer Management", "Product Management", "Git", "Docker", "Full Stack Development"]
+  },
+  {
+    id: 7,
+    role: "Web Developer",
+    company: "Regen Digital Inc.",
+    period: "2025",
+    description: "Worked as a Web Developer at Regen Digital Inc., developing and maintaining business websites for clients across Norway, the United States, Australia, and the Philippines. Built responsive, modern, and SEO-friendly websites tailored to different industries and client requirements. Collaborated with designers, project managers, and developers to deliver high-quality web solutions focused on performance, usability, and brand identity. Handled frontend development, backend integration, website customization, and deployment processes for multiple international projects.",
+    technologies: ["React", "Next.js", "JavaScript", "TypeScript", "TailwindCSS", "Node.js", "REST API", "Responsive Web Design", "SEO Optimization", "CMS Integration", "Git", "Frontend Development", "Web Deployment"]
+  },
+  {
     id: 1,
     role: "Full Stack Developer",
     company: "Byte Forward Hackathon National - The Final Pitch (Top 5)",
@@ -224,10 +312,10 @@ export const EXPERIENCE: Experience[] = [
   {
     id: 3,
     role: "Full Stack Developer",
-    company: "GDG-HAU Hackathon 2025: Beyond the Limits - The AI Hack",
+    company: "May Rights Ba Ako? - GDG-HAU Hackathon 2025: Beyond the Limits - The AI Hack",
     period: "2025",
-    description: "Participated in a competitive hackathon focused on AI innovation, developing a full-stack application that leverages artificial intelligence to solve real-world challenges. Built a scalable solution with modern web technologies, integrating AI capabilities seamlessly into the user experience.",
-    technologies: ["Next.js", "Firebase", "TypeScript", "React", "TailwindCSS", "AI Integration"]
+    description: "Built May Rights Ba Ako?, an AI-powered legal rights analysis platform developed for GDG-HAU Hackathon 2025: Beyond the Limits - The AI Hack. The application analyzes user-submitted legal cases, generates clear case summaries, and provides guidance based on the situation described. Implemented Firebase for secure storage and data handling, used Next.js for the full-stack application, and added support for surfacing nearby lawyers, attorneys, government offices, and relevant legal assistance resources based on the user's area.",
+    technologies: ["Next.js", "Firebase", "TypeScript", "React", "TailwindCSS", "AI Integration", "LegalTech", "Case Analysis", "Case Summarization", "Firebase Security", "Resource Directory"]
   },
   {
     id: 4,
@@ -274,30 +362,207 @@ export const TESTIMONIALS: Testimonial[] = [
 export const BLOG_POSTS: BlogPost[] = [
   {
     id: 1,
-    title: "The Future of WebGL in E-Commerce",
-    excerpt: "Why 3D product configuration is becoming the standard for high-end retail brands, and how to implement it performantly.",
-    date: "Oct 12, 2024",
-    readTime: "5 min read",
-    tags: ["Three.js", "UX", "Performance"],
-    image: "https://picsum.photos/800/600?grayscale&random=10"
+    category: "Product Engineering",
+    title: "From Hackathon Prototype to Production-Ready App",
+    deck: "A practical path for turning fast competition builds into maintainable software.",
+    excerpt: "How to preserve the speed of a hackathon while adding the architecture, validation, accessibility, and deployment discipline a real product needs.",
+    date: "May 18, 2026",
+    readTime: "7 min read",
+    tags: ["React", "Node.js", "Product"],
+    image: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1200&q=80",
+    content: [
+      {
+        heading: "Prototype Speed Is Not the Problem",
+        paragraphs: [
+          "The best hackathon builds usually work because the team protected one clear user loop. They did not try to build a platform. They built a sharp path from problem to result, then made the demo prove that path quickly.",
+          "The production mistake is throwing that speed away too early. A prototype already contains valuable decisions: what the user cares about, which screens matter, where the backend needs to be dependable, and which rough edges are acceptable for a first version."
+        ]
+      },
+      {
+        heading: "Stabilize the Core Loop First",
+        paragraphs: [
+          "Before adding new features, I like to map the core workflow as a chain of promises: input, validation, action, feedback, and recovery. Each promise needs a clear owner in the codebase. React owns state and feedback, the API owns validation and data shape, and persistence owns the record of truth.",
+          "This is where small decisions matter. Shared types, predictable error responses, loading states, empty states, and basic accessibility make the app feel intentional even before it becomes large."
+        ]
+      },
+      {
+        heading: "Turn the Demo Into a Product",
+        paragraphs: [
+          "A demo proves that an idea can work. A product proves that the idea can survive repeated use. The path between them is not glamorous: remove hardcoded values, replace optimistic assumptions with validation, add logging, test the riskiest flows, and make deployment repeatable.",
+          "The goal is not to over-engineer the first release. The goal is to make the next decision easier. A production-ready app is one where the team can keep moving without being punished by yesterday's shortcuts."
+        ]
+      }
+    ]
   },
   {
     id: 2,
-    title: "Scaling Node.js Microservices",
-    excerpt: "Lessons learned from decomposing a massive monolith into resilient, independent services using NestJS and Kafka.",
-    date: "Sep 28, 2024",
-    readTime: "8 min read",
-    tags: ["Backend", "Architecture", "DevOps"],
-    image: "https://picsum.photos/800/600?grayscale&random=11"
+    category: "AI Systems",
+    title: "Designing AI Features That Feel Useful, Not Decorative",
+    deck: "Good AI integrations solve workflow problems before they show off model output.",
+    excerpt: "A field guide to scoping Gemini-powered features, grounding responses in product data, and shaping interfaces that keep users in control.",
+    date: "May 10, 2026",
+    readTime: "6 min read",
+    tags: ["AI", "Gemini", "UX"],
+    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1200&q=80",
+    content: [
+      {
+        heading: "Start With the Workflow, Not the Model",
+        paragraphs: [
+          "AI features fail when they are designed as a blank text box with a famous model behind it. Useful AI starts with a specific job: summarize a record, draft a response, classify a request, generate a starting point, or explain a complex state.",
+          "The interface should make the model feel like a tool inside the workflow. That means clear context, visible source data, edit controls, and a way to reject or revise the output."
+        ]
+      },
+      {
+        heading: "Ground the Output",
+        paragraphs: [
+          "For Gemini-powered features, grounding is usually more important than clever prompting. The model needs the right project data, constraints, tone, and examples before it can produce something dependable.",
+          "I prefer small, explicit prompts that describe the task and include structured context. If the app can pass clean objects instead of vague text blobs, the result becomes easier to test and easier to debug."
+        ]
+      },
+      {
+        heading: "Keep the User in Charge",
+        paragraphs: [
+          "The most trustworthy AI interfaces show their seams. Users should know what was generated, what was pulled from their data, and what still needs review.",
+          "A good AI feature reduces effort without removing judgment. The product should make the next action obvious: accept, edit, retry, copy, or inspect the source."
+        ]
+      }
+    ]
   },
   {
     id: 3,
-    title: "AI-Driven UI Components",
-    excerpt: "Building 'smart' components that adapt their layout and content based on user behavior using Gemini Flash.",
-    date: "Sep 15, 2024",
+    category: "Frontend Craft",
+    title: "Building Interfaces That Stay Fast Under Motion",
+    deck: "Animation should clarify state and rhythm without taxing the main thread.",
+    excerpt: "Techniques for keeping React, Framer Motion, and Three.js experiences smooth through measured transforms, lazy rendering, and reduced layout churn.",
+    date: "Apr 29, 2026",
+    readTime: "8 min read",
+    tags: ["React", "Motion", "Performance"],
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+    content: [
+      {
+        heading: "Motion Should Explain State",
+        paragraphs: [
+          "Animation is strongest when it helps the user understand where they are, what changed, and what can happen next. It becomes noise when every element competes for attention.",
+          "For React interfaces, I treat motion as part of the information architecture. Page transitions, reveal effects, hover states, and scroll scenes should each have a job."
+        ]
+      },
+      {
+        heading: "Prefer Cheap Properties",
+        paragraphs: [
+          "The browser can animate transforms and opacity much more comfortably than layout-heavy properties. When an effect needs to feel cinematic, I try to build it from translate, scale, opacity, and clip-like composition before reaching for filters or layout changes.",
+          "This matters more on portfolio sites because the visual layer is already heavy. Framer Motion and Three.js can coexist, but they need discipline around render frequency, asset size, and scroll listeners."
+        ]
+      },
+      {
+        heading: "Measure the Feeling",
+        paragraphs: [
+          "Smoothness is not only a number, but the numbers help. Frame drops, layout shifts, oversized images, and long JavaScript tasks all show up as a feeling of friction.",
+          "The polish pass is where I reduce motion blur, remove unnecessary re-renders, simplify scroll effects, and make sure the interface still feels good on a smaller device."
+        ]
+      }
+    ]
+  },
+  {
+    id: 4,
+    category: "Backend Design",
+    title: "API Boundaries for Small Teams Moving Quickly",
+    deck: "A clean contract can keep a fast build from becoming a fragile build.",
+    excerpt: "Patterns for request validation, service boundaries, error responses, and data modeling when a project needs to move quickly without becoming chaotic.",
+    date: "Apr 17, 2026",
+    readTime: "5 min read",
+    tags: ["Express", "MongoDB", "Architecture"],
+    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80",
+    content: [
+      {
+        heading: "Boundaries Reduce Guesswork",
+        paragraphs: [
+          "Small teams move faster when the API makes fewer things ambiguous. A route should tell the frontend what shape to send, what shape to expect, and how failure will be represented.",
+          "That does not require a massive architecture. It requires consistent naming, validation near the boundary, and response formats that do not surprise the client."
+        ]
+      },
+      {
+        heading: "Make Errors Useful",
+        paragraphs: [
+          "A backend error should help the interface decide what to do next. Is the input invalid? Is the user unauthorized? Is the server temporarily unavailable? Those are different experiences.",
+          "When Express APIs return structured error codes and friendly messages, the frontend can display better feedback without parsing vague exception text."
+        ]
+      },
+      {
+        heading: "Model the Data Around Behavior",
+        paragraphs: [
+          "MongoDB and relational databases both reward clear product thinking. The key question is not only what data exists, but how the app reads and changes that data during real workflows.",
+          "Good boundaries make the system easier to replace later. If the frontend talks to stable use-case endpoints, the storage layer can evolve without forcing every screen to change."
+        ]
+      }
+    ]
+  },
+  {
+    id: 5,
+    category: "3D Web",
+    title: "When Three.js Belongs in a Portfolio Experience",
+    deck: "3D should create spatial memory, not just visual noise.",
+    excerpt: "How to decide when WebGL is worth the complexity, where to place fallbacks, and how to balance spectacle with content readability.",
+    date: "Apr 03, 2026",
     readTime: "6 min read",
-    tags: ["AI", "React", "Gemini"],
-    image: "https://picsum.photos/800/600?grayscale&random=12"
+    tags: ["Three.js", "WebGL", "Design"],
+    image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&w=1200&q=80",
+    content: [
+      {
+        heading: "Use 3D When It Adds Memory",
+        paragraphs: [
+          "Three.js belongs in a portfolio when it gives the visitor a stronger sense of place. A subtle environment, interactive object, or spatial transition can make the work feel more memorable than a flat list of cards.",
+          "It should still serve the content. If the 3D layer makes text harder to read, delays the first impression, or distracts from the projects, it is no longer helping."
+        ]
+      },
+      {
+        heading: "Design the Fallback Early",
+        paragraphs: [
+          "WebGL experiences need graceful failure paths. Some devices will be underpowered, some browsers will behave differently, and some users simply prefer reduced motion.",
+          "A strong implementation has a static visual fallback, conservative asset sizes, and a clear way to pause or reduce expensive animation."
+        ]
+      },
+      {
+        heading: "Balance Spectacle and Navigation",
+        paragraphs: [
+          "The goal is not to prove that the page can render a complex scene. The goal is to make the user curious enough to keep exploring.",
+          "The best 3D portfolio details are confident but restrained: visible enough to create identity, quiet enough that projects, experience, and contact paths stay easy to find."
+        ]
+      }
+    ]
+  },
+  {
+    id: 6,
+    category: "Delivery Notes",
+    title: "What Winning Builds Have in Common",
+    deck: "The strongest projects make tradeoffs visible and execution obvious.",
+    excerpt: "Lessons from competitive builds: choosing the right scope, demoing the core loop early, and making technical decisions judges and users can understand.",
+    date: "Mar 22, 2026",
+    readTime: "4 min read",
+    tags: ["Hackathon", "Strategy", "Demo"],
+    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
+    content: [
+      {
+        heading: "Strong Builds Make the Tradeoff Obvious",
+        paragraphs: [
+          "Winning builds are rarely the biggest builds. They are the ones where the team chose a painful problem, made the solution legible, and protected the most important workflow from scope creep.",
+          "A judge or user should understand the tradeoff quickly: what was ignored, what was solved, and why the selected path creates value."
+        ]
+      },
+      {
+        heading: "Demo the Core Loop Early",
+        paragraphs: [
+          "The demo should not depend on a perfect final hour. I like to have the core loop presentable as early as possible, even if the UI is still rough.",
+          "Once the loop works, every improvement becomes clearer: better copy, faster loading, cleaner data, smoother transitions, and a more confident pitch."
+        ]
+      },
+      {
+        heading: "Explain the Technical Choices",
+        paragraphs: [
+          "Technical depth matters, but it needs translation. A stack choice should connect to speed, reliability, user experience, or future scale.",
+          "When the team can explain both the product reason and the engineering reason behind a decision, the build feels intentional instead of lucky."
+        ]
+      }
+    ]
   }
 ];
 

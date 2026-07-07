@@ -1,28 +1,21 @@
 
-import React, { useState, useEffect, useRef } from 'react';
-import { motion, useScroll, useTransform, useSpring, useMotionValue, useVelocity, AnimatePresence } from 'framer-motion';
-import { Github, Linkedin, Mail, ExternalLink, ChevronDown, ArrowRight, Download, Search, Palette, Zap, CheckCircle, Rocket } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { Github, Linkedin, Mail, ChevronDown, Download, Search, Palette, Zap, CheckCircle, Rocket, Briefcase } from 'lucide-react';
 import ThreeBackground from './components/ThreeBackground';
 import AiAssistant from './components/AiAssistant';
 import BentoSection from './components/BentoSection';
 import BlogPage from './components/BlogPage';
 import TelemetryPage from './components/TelemetryPage';
 import ProjectCarousel from './components/ProjectCarousel';
+import WebDesignSection from './components/WebDesignSection';
 import { TextReveal, GlitchText } from './components/TextReveal';
 import { ScrollReveal } from './components/ScrollReveal';
-import { PROJECTS, EXPERIENCE, PORTFOLIO_OWNER, PORTFOLIO_ROLE } from './constants';
-import { SectionId, Project, Page } from './types';
+import { EXPERIENCE, PORTFOLIO_OWNER, PORTFOLIO_ROLE } from './constants';
+import { SectionId, Page } from './types';
 
 function App() {
   const { scrollY } = useScroll();
-  const scrollVelocity = useVelocity(scrollY);
-  const smoothVelocity = useSpring(scrollVelocity, { damping: 50, stiffness: 400 });
-  
-  // Cinematic Global Effects
-  // 1. Motion Blur based on speed
-  const blurAmount = useTransform(smoothVelocity, [-3000, 0, 3000], [5, 0, 5]);
-  // 2. Dolly Zoom Effect (Scale entire container slightly)
-  const dollyScale = useTransform(smoothVelocity, [-3000, 0, 3000], [0.98, 1, 0.98]);
 
   const [activeSection, setActiveSection] = useState<SectionId>(SectionId.HERO);
   const [currentPage, setCurrentPage] = useState<Page>(Page.HOME);
@@ -64,7 +57,10 @@ function App() {
   }, [currentPage]);
 
   return (
-    <div className="relative min-h-screen bg-background text-zinc-100 selection:bg-accent-400/30 selection:text-white overflow-x-hidden font-sans font-light">
+    <div
+      style={{ overflowX: 'clip' }}
+      className="relative min-h-screen bg-background text-zinc-100 selection:bg-accent-400/30 selection:text-white font-sans font-light"
+    >
       
       {/* GLOBAL CINEMATIC OVERLAY */}
       <div className="fixed inset-0 pointer-events-none z-[60]">
@@ -132,12 +128,7 @@ function App() {
 
       {/* Cinematic Main Container */}
       <motion.div 
-        style={{ 
-          filter: useTransform(blurAmount, (v) => `blur(${v}px)`), 
-          scale: dollyScale,
-          transformOrigin: 'center top'
-        }}
-        className="relative z-10 will-change-transform"
+        className="relative z-10"
       >
         <AnimatePresence mode="wait">
           {currentPage === Page.INSIGHTS ? (
@@ -159,7 +150,7 @@ function App() {
                   className="text-center px-4 max-w-5xl mx-auto z-20 flex flex-col items-center"
                 >
                   <ScrollReveal mode="cinematic">
-                    <h2 className="text-accent-400/80 font-mono mb-6 tracking-[0.5em] text-xs uppercase glow-text">
+                    <h2 className="text-accent-400/80 font-mono mb-6 tracking-[0.35em] text-sm uppercase glow-text">
                       Welcome
                     </h2>
                     
@@ -174,7 +165,7 @@ function App() {
                     <motion.button
                       whileHover={{ scale: 1.05, letterSpacing: '0.3em' }}
                       whileTap={{ scale: 0.95 }}
-                      onClick={() => scrollToSection(SectionId.FEATURED)}
+                      onClick={() => scrollToSection(SectionId.APPS)}
                       className="px-12 py-4 border border-white/20 bg-white/5 text-white rounded-sm font-medium text-xs uppercase tracking-[0.2em] hover:bg-white hover:text-black transition-all shadow-[0_0_30px_rgba(255,255,255,0.1)] relative overflow-hidden"
                     >
                       <span className="relative z-10">Initialize</span>
@@ -200,7 +191,7 @@ function App() {
                 <div className="max-w-7xl mx-auto">
                   <ScrollReveal mode="dolly">
                     <div className="mb-20 text-center">
-                      <h3 className="text-zinc-300 font-mono text-xs tracking-[0.5em] uppercase mb-4">Full Stack Mastery</h3>
+                      <h3 className="text-zinc-300 font-mono text-sm tracking-[0.35em] uppercase mb-4">Full Stack Mastery</h3>
                       <TextReveal text="Expertise" className="text-5xl md:text-7xl font-light tracking-tighter text-white" />
                       <p className="text-zinc-400 text-sm mt-6 max-w-2xl mx-auto font-light leading-relaxed">
                         Proficient in building end-to-end solutions from pixel-perfect interfaces to robust server architectures. 
@@ -264,14 +255,18 @@ function App() {
               <ProjectCarousel />
 
               {/* PROCESS/METHODOLOGY SECTION */}
-              <section id="process" className="py-40 px-6 relative bg-zinc-900/10">
-                <div className="max-w-7xl mx-auto">
+              <section id="process" className="relative overflow-hidden bg-black px-6 py-32 md:py-40">
+                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent-400/25 to-transparent" />
+                <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(120deg,rgba(56,189,248,0.08),transparent_28%,rgba(255,255,255,0.035)_58%,transparent_82%)]" />
+                <div className="max-w-7xl mx-auto relative z-10">
                   <ScrollReveal mode="dolly">
-                    <div className="mb-20 text-center">
-                      <h3 className="text-zinc-300 font-mono text-xs tracking-[0.5em] uppercase mb-4">Development Workflow</h3>
-                      <TextReveal text="Process & Methodology" className="text-5xl md:text-7xl font-light tracking-tighter text-white" />
-                      <p className="text-zinc-400 text-sm mt-6 max-w-2xl mx-auto font-light leading-relaxed">
-                        A systematic approach to building exceptional digital experiences, from concept to deployment.
+                    <div className="mb-14 grid gap-8 md:grid-cols-[1fr_420px] md:items-end">
+                      <div>
+                        <h3 className="text-zinc-300 font-mono text-sm uppercase mb-4">Development Workflow</h3>
+                        <TextReveal text="Process & Method" className="text-5xl md:text-7xl font-light text-white" />
+                      </div>
+                      <p className="text-zinc-300 text-base font-light leading-relaxed">
+                        A build method for moving from unclear idea to usable product: discover the loop, design the system, ship in slices, harden the edges, then improve from real feedback.
                       </p>
                     </div>
                   </ScrollReveal>
@@ -280,93 +275,24 @@ function App() {
                 </div>
               </section>
 
-              {/* EXPERIENCE SECTION */}
-              <section id="experience" className="py-40 px-6">
-                <div className="max-w-6xl mx-auto">
-                   <div className="grid md:grid-cols-12 gap-16">
-                     <div className="md:col-span-4 hidden md:block sticky top-32 h-fit">
-                        <ScrollReveal mode="dolly">
-                            <h3 className="text-[12rem] font-black text-white/5 tracking-tighter absolute -left-20 -top-20 -z-10 select-none leading-none">EXP</h3>
-                            <h3 className="text-5xl font-light text-white mb-6">Career<br/>Log</h3>
-                            <p className="text-zinc-200 text-lg leading-relaxed font-light mb-8">
-                            A tactical overview of deployed systems and engineering leadership.
-                            </p>
-                            <button 
-                                onClick={() => {
-                                    const link = document.createElement('a');
-                                    link.href = '/russelleroxascv.pdf';
-                                    link.download = 'Russelle_Roxas_Resume.pdf';
-                                    document.body.appendChild(link);
-                                    link.click();
-                                    document.body.removeChild(link);
-                                }}
-                                className="flex items-center gap-2 text-xs uppercase tracking-widest text-accent-400 hover:text-white transition-colors border-b border-accent-400/30 pb-1 cursor-pointer"
-                            >
-                                <Download size={14} /> Download Resume
-                            </button>
-                        </ScrollReveal>
-                     </div>
-                     
-                     <div className="md:col-span-8 relative pl-8 ml-2 border-l border-white/5 space-y-20">
-                        {EXPERIENCE.map((job, idx) => (
-                          <ScrollReveal key={job.id} mode="hud" delay={idx * 0.1}>
-                            <div className="relative group">
-                              <span className="absolute -left-[41px] top-2 w-5 h-[1px] bg-accent-400 group-hover:w-8 transition-all duration-300" />
-                              <div className="mb-4">
-                                <h3 className="text-3xl font-light text-white group-hover:text-accent-400 transition-colors">{job.role}</h3>
-                                <div className="flex justify-between items-baseline mt-2 border-b border-white/5 pb-2">
-                                  <h4 className="text-lg text-zinc-300">{job.company}</h4>
-                                  <span className="text-zinc-300 font-mono text-xs uppercase tracking-wider">{job.period}</span>
-                                </div>
-                              </div>
-                              <p className="text-zinc-200 mb-6 leading-relaxed font-light max-w-2xl">{job.description}</p>
-                              <div className="flex flex-wrap gap-2">
-                                {job.technologies.map(tech => (
-                                  <span key={tech} className="text-[10px] font-mono text-accent-400/70 bg-accent-900/10 border border-accent-900/20 px-2 py-1 rounded">
-                                    {tech}
-                                  </span>
-                                ))}
-                              </div>
-                            </div>
-                          </ScrollReveal>
-                        ))}
-                      </div>
-                   </div>
-                </div>
+              <CareerLog />
+
+              <section
+                aria-hidden="true"
+                className="relative h-36 md:h-52 overflow-hidden bg-gradient-to-b from-black via-zinc-950/80 to-black"
+              >
+                <div className="absolute left-1/2 top-1/2 h-px w-[min(720px,80vw)] -translate-x-1/2 bg-gradient-to-r from-transparent via-accent-400/25 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-black" />
               </section>
 
-              {/* PROJECTS GRID */}
-              <section id="projects" className="py-40 px-6 relative bg-zinc-900/20">
-                <div className="max-w-7xl mx-auto">
-                  <ScrollReveal mode="dolly">
-                    <div className="flex flex-col md:flex-row justify-between items-end mb-24 gap-6 border-b border-white/5 pb-8">
-                        <div>
-                            <h3 className="text-zinc-300 font-mono text-xs tracking-[0.5em] uppercase mb-4">Project Database</h3>
-                            <TextReveal text="Deployment Archive" className="text-5xl md:text-7xl font-light tracking-tighter text-white" />
-                        </div>
-                        <motion.button 
-                            whileHover={{ x: 5 }}
-                            className="hidden md:flex items-center gap-2 text-zinc-200 hover:text-white transition-colors text-xs uppercase tracking-widest"
-                        >
-                            View Full Index <ArrowRight size={14} />
-                        </motion.button>
-                    </div>
-                  </ScrollReveal>
-                  
-                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 perspective-1000">
-                    {PROJECTS.map((project, idx) => (
-                      <ProjectCard key={project.id} project={project} index={idx} />
-                    ))}
-                  </div>
-                </div>
-              </section>
+              <WebDesignSection />
 
               {/* CONTACT */}
               <section id="contact" className="py-40 px-6 mb-10 relative overflow-hidden">
                 <ScrollReveal mode="dolly">
                   <div className="max-w-5xl mx-auto text-center relative z-10">
                     <div className="mb-16">
-                        <h3 className="text-accent-400 font-mono text-xs tracking-[0.5em] uppercase mb-6 animate-pulse">Connection Secured</h3>
+                        <h3 className="text-accent-400 font-mono text-sm tracking-[0.35em] uppercase mb-6 animate-pulse">Connection Secured</h3>
                         <h2 className="text-6xl md:text-9xl font-medium tracking-tighter text-white mb-8 mix-blend-overlay">
                           INITIATE<br/>PROTOCOL
                         </h2>
@@ -423,257 +349,223 @@ const SocialLink = ({ href, icon, label }: { href: string, icon: React.ReactNode
   </motion.a>
 );
 
+const CareerLog: React.FC = () => {
+  const downloadResume = () => {
+    const link = document.createElement('a');
+    link.href = '/russellecv.pdf';
+    link.download = 'Russelle_Roxas_Resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  return (
+    <section id="experience" className="relative overflow-hidden bg-black px-5 py-32 sm:px-6 md:py-40">
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent-400/25 to-transparent" />
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(140deg,rgba(56,189,248,0.045),transparent_32%,rgba(255,255,255,0.02)_72%,transparent_90%)]" />
+
+      <div className="relative z-10 mx-auto max-w-6xl">
+        <div className="grid gap-14 md:grid-cols-12 md:gap-16">
+          <aside className="md:sticky md:top-32 md:col-span-4 md:h-fit">
+            <ScrollReveal mode="dolly" width="100%">
+              <div className="relative">
+                <h3 className="pointer-events-none absolute -left-4 -top-14 -z-10 select-none text-[8rem] font-black leading-none text-white/[0.04] md:-left-20 md:-top-20 md:text-[12rem]">
+                  EXP
+                </h3>
+                <p className="font-mono text-sm uppercase text-accent-400">Experience Archive</p>
+                <h2 className="mt-4 text-5xl font-light leading-none text-white md:text-6xl">
+                  Career
+                  <br />
+                  Log
+                </h2>
+                <p className="mt-7 max-w-sm text-base font-light leading-relaxed text-zinc-300">
+                  A timeline of fintech engineering, client websites, hackathon builds, and technical talks.
+                </p>
+                <button
+                  onClick={downloadResume}
+                  className="mt-8 inline-flex items-center gap-3 border-b border-accent-400/35 pb-2 font-mono text-sm uppercase tracking-[0.18em] text-accent-400 transition-colors hover:border-white/40 hover:text-white"
+                >
+                  <Download size={16} />
+                  Download Resume
+                </button>
+
+                <div className="mt-10 flex items-center gap-4 border border-white/10 bg-white/[0.03] p-4 text-zinc-300">
+                  <Briefcase size={20} className="text-accent-400" />
+                  <div>
+                    <p className="font-mono text-xs uppercase text-zinc-500">Track</p>
+                    <p className="text-base text-white">Software Engineering</p>
+                  </div>
+                </div>
+              </div>
+            </ScrollReveal>
+          </aside>
+
+          <div className="relative md:col-span-8">
+            <div className="absolute left-0 top-0 hidden h-full w-px bg-gradient-to-b from-transparent via-white/10 to-transparent md:block" />
+
+            <div className="space-y-14 md:pl-14">
+              {EXPERIENCE.map((job, index) => (
+                <ScrollReveal key={job.id} mode="hud" delay={index * 0.06} width="100%">
+                  <article className="group relative border-l border-white/10 pl-6 md:border-l-0 md:pl-0">
+                    <span className="absolute -left-[62px] top-3 hidden h-3 w-3 border border-accent-400 bg-black shadow-[0_0_18px_rgba(56,189,248,0.45)] transition-colors group-hover:bg-accent-400 md:block" />
+                    <span className="absolute -left-14 top-[18px] hidden h-px w-9 bg-accent-400/60 transition-all duration-300 group-hover:w-12 group-hover:bg-accent-400 md:block" />
+
+                    <div className="border-b border-white/10 pb-12">
+                      <div className="mb-5 min-w-0">
+                        <p className="font-mono text-sm uppercase text-accent-400">
+                          {String(index + 1).padStart(2, '0')}
+                        </p>
+                        <h3 className="mt-3 text-3xl font-light leading-tight text-white transition-colors group-hover:text-accent-400 md:text-4xl">
+                          {job.role}
+                        </h3>
+                        <p className="mt-3 break-words text-lg font-light leading-snug text-zinc-300">
+                          {job.company}
+                        </p>
+                      </div>
+
+                      <p className="max-w-3xl text-base font-light leading-relaxed text-zinc-200">
+                        {job.description}
+                      </p>
+
+                      <div className="mt-6 flex flex-wrap gap-2.5">
+                        {job.technologies.map((tech) => (
+                          <span
+                            key={tech}
+                            className="border border-accent-900/30 bg-accent-900/10 px-3 py-2 font-mono text-xs leading-none text-accent-400/90"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </article>
+                </ScrollReveal>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const CareerMetric = ({ value, label }: { value: string; label: string }) => (
+  <div className="border border-white/10 bg-white/[0.03] p-5">
+    <p className="text-3xl font-light text-white">{value}</p>
+    <p className="mt-2 font-mono text-xs uppercase text-zinc-500">{label}</p>
+  </div>
+);
+
 const ProcessMethodology: React.FC = () => {
-  const [hoveredStep, setHoveredStep] = useState<number | null>(null);
-  
   const processSteps = [
     {
       id: 1,
+      phase: "Signal",
       title: "Discovery & Planning",
       icon: Search,
-      shortDesc: "Understanding requirements and defining scope",
-      fullDesc: "Deep understanding of problems, user needs, and business objectives through stakeholder interviews and technical feasibility analysis.",
-      tools: ["User Research", "Wireframing", "Technical Planning", "Stakeholder Alignment"]
+      shortDesc: "Find the real user loop",
+      fullDesc: "I start by identifying the workflow that actually matters: the user, the action, the friction, and the result. Scope gets shaped around what must be true for the first useful version.",
+      tools: ["User Research", "Problem Framing", "Scope Map", "Technical Risk"],
+      output: "A clear build target and the smallest valuable release."
     },
     {
       id: 2,
+      phase: "Blueprint",
       title: "Design & Architecture",
       icon: Palette,
-      shortDesc: "Crafting the blueprint for success",
-      fullDesc: "Scalable system architectures and intuitive interfaces with database schemas, API structures, and consistent design systems.",
-      tools: ["System Design", "UI/UX Design", "Database Schema", "API Architecture"]
+      shortDesc: "Design the system before the screen",
+      fullDesc: "The UI, API, and database are planned together so the product feels smooth from the first click to the final stored record. I keep the architecture readable and ready to grow.",
+      tools: ["UI Flows", "Data Models", "API Contracts", "Design System"],
+      output: "A product map that engineering and design can both trust."
     },
     {
       id: 3,
+      phase: "Forge",
       title: "Development & Implementation",
       icon: Zap,
-      shortDesc: "Building with precision and speed",
-      fullDesc: "Clean, maintainable code following best practices. Incremental feature implementation with focus on performance and accessibility.",
-      tools: ["React/Next.js", "Node.js/Express", "MongoDB/PostgreSQL", "Real-time Features"]
+      shortDesc: "Ship useful slices quickly",
+      fullDesc: "I build in thin vertical slices: interface, validation, backend logic, persistence, and feedback states. Each slice should work, teach us something, and reduce uncertainty.",
+      tools: ["React/Next.js", "Node/NestJS", "TypeScript", "PostgreSQL"],
+      output: "Working product increments instead of a long invisible build."
     },
     {
       id: 4,
+      phase: "Harden",
       title: "Testing & Quality Assurance",
       icon: CheckCircle,
-      shortDesc: "Ensuring reliability and performance",
-      fullDesc: "Thorough testing including unit, integration, and user acceptance tests. Performance optimization and security audits.",
-      tools: ["Unit Testing", "Integration Testing", "Performance Optimization", "Security Audits"]
+      shortDesc: "Protect the parts users feel",
+      fullDesc: "The polish pass is where rough edges disappear: loading states, empty states, error paths, accessibility, query speed, security checks, and the flows most likely to break.",
+      tools: ["Flow Testing", "Accessibility", "Performance", "Security Checks"],
+      output: "A release that feels dependable under real use."
     },
     {
       id: 5,
+      phase: "Launch",
       title: "Deployment & Iteration",
       icon: Rocket,
-      shortDesc: "Launching and continuous improvement",
-      fullDesc: "Modern CI/CD pipelines and cloud deployment. Monitor performance, gather feedback, and iterate for continuous improvement.",
-      tools: ["CI/CD", "Cloud Deployment", "Monitoring", "Continuous Improvement"]
+      shortDesc: "Release, watch, improve",
+      fullDesc: "Launch is not the finish line. I keep deployment repeatable, monitor the product, listen to usage signals, and turn feedback into the next focused iteration.",
+      tools: ["Deployment", "Monitoring", "Feedback Loop", "Iteration"],
+      output: "A live system with a practical path for the next version."
     }
   ];
 
   return (
     <div className="relative">
-      {/* Connection Lines */}
-      <div className="hidden md:block absolute top-1/2 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-y-1/2 z-0" />
-      
-      <div className="grid md:grid-cols-5 gap-6 relative z-10">
+      <div className="mb-8 grid gap-3 sm:grid-cols-3">
+        <CareerMetric value="05" label="Phases" />
+        <CareerMetric value="Build" label="Mode" />
+        <CareerMetric value="Iterate" label="Rhythm" />
+      </div>
+
+      <div className="grid gap-4">
         {processSteps.map((step, index) => (
-          <ScrollReveal key={step.id} mode="cinematic" delay={index * 0.1}>
-            <motion.div
-              className="relative group"
-              onMouseEnter={() => setHoveredStep(step.id)}
-              onMouseLeave={() => setHoveredStep(null)}
-              whileHover={{ y: -5 }}
-              transition={{ duration: 0.3 }}
-            >
-              {/* Step Card */}
-              <div className={`
-                relative pt-12 pb-8 px-8 border border-white/5 bg-zinc-900/20 rounded-sm transition-all duration-500 h-full group/item overflow-visible
-                ${hoveredStep === step.id 
-                  ? 'border-accent-400/50 bg-accent-900/10 shadow-[0_0_30px_rgba(56,189,248,0.2)]' 
-                  : 'hover:border-accent-400/30'
-                }
-              `}>
-                {/* Left border accent */}
-                <div className={`
-                  absolute top-0 left-0 w-1 h-full transition-all duration-500
-                  ${hoveredStep === step.id 
-                    ? 'bg-accent-400 scale-y-100' 
-                    : 'bg-accent-400/0 group-hover/item:bg-accent-400/50 scale-y-0 group-hover/item:scale-y-100'
-                  }
-                `} />
-
-                {/* Animated Border Glow */}
-                {hoveredStep === step.id && (
-                  <motion.div
-                    className="absolute inset-0 border border-accent-400/30 rounded-sm"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: [0.3, 0.6, 0.3] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                  />
-                )}
-
-                {/* Step Number Badge */}
-                <div className={`
-                  absolute top-4 left-1/2 -translate-x-1/2 w-8 h-8 rounded-full flex items-center justify-center
-                  border font-mono text-xs font-medium transition-all duration-500
-                  ${hoveredStep === step.id 
-                    ? 'bg-accent-400 border-accent-400 text-black shadow-[0_0_15px_rgba(56,189,248,0.4)]' 
-                    : 'bg-zinc-900 border-white/10 text-zinc-400 group-hover/item:border-accent-400/50 group-hover/item:text-accent-400'
-                  }
-                `}>
-                  {step.id}
-                </div>
-
-                {/* Icon */}
-                <div className="flex justify-center mb-4 mt-2">
-                  <div className={`
-                    p-4 rounded-full border transition-all duration-500
-                    ${hoveredStep === step.id 
-                      ? 'border-accent-400 bg-accent-900/30 text-accent-400 shadow-[0_0_20px_rgba(56,189,248,0.3)]' 
-                      : 'border-white/10 bg-white/[0.02] text-zinc-400 group-hover/item:border-accent-400/50 group-hover/item:text-accent-400'
-                    }
-                  `}>
-                    <step.icon size={24} className="transition-colors duration-300" />
+          <ScrollReveal key={step.id} mode="hud" delay={index * 0.05} width="100%">
+            <article className="relative overflow-hidden border border-white/10 bg-zinc-950/75 p-5 transition-colors hover:border-accent-400/35 sm:p-6">
+              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-accent-400/45 via-white/10 to-transparent" />
+              <div className="grid gap-5 lg:grid-cols-[120px_minmax(0,1fr)_280px] lg:items-start">
+                <div className="flex items-center gap-3 lg:block">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center border border-accent-400/30 bg-accent-400/10 text-accent-400">
+                    <step.icon size={22} />
+                  </div>
+                  <div className="lg:mt-4">
+                    <p className="font-mono text-sm text-accent-400">
+                      {String(step.id).padStart(2, '0')}
+                    </p>
+                    <p className="text-sm text-zinc-500">{step.phase}</p>
                   </div>
                 </div>
 
-                {/* Title */}
-                <h3 className={`
-                  text-xl font-light mb-3 text-center transition-colors duration-300
-                  ${hoveredStep === step.id ? 'text-accent-400' : 'text-white group-hover/item:text-accent-400'}
-                `}>
-                  {step.title}
-                </h3>
+                <div className="min-w-0">
+                  <h3 className="text-2xl font-light leading-tight text-white md:text-3xl">
+                    {step.title}
+                  </h3>
+                  <p className="mt-2 text-base text-zinc-300">{step.shortDesc}</p>
+                  <p className="mt-4 max-w-3xl text-base font-light leading-relaxed text-zinc-300">
+                    {step.fullDesc}
+                  </p>
+                </div>
 
-                {/* Short Description */}
-                <p className="text-zinc-300 text-sm text-center font-light leading-relaxed mb-4">
-                  {step.shortDesc}
-                </p>
-
-                {/* Expanded Content */}
-                <AnimatePresence>
-                  {hoveredStep === step.id && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="overflow-hidden"
-                    >
-                      <div className="pt-4 border-t border-white/10">
-                        <p className="text-zinc-300 text-xs font-light leading-relaxed mb-3">
-                          {step.fullDesc}
-                        </p>
-                        <div className="flex flex-wrap gap-2">
-                          {step.tools.map((tool, i) => (
-                            <motion.span
-                              key={i}
-                              initial={{ opacity: 0, scale: 0.8 }}
-                              animate={{ opacity: 1, scale: 1 }}
-                              transition={{ delay: i * 0.03 }}
-                              className="text-[10px] font-mono text-accent-400/70 bg-accent-900/10 border border-accent-900/20 px-2 py-1 rounded"
-                            >
-                              {tool}
-                            </motion.span>
-                          ))}
-                        </div>
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-
-                {/* Connection Arrow (Desktop) */}
-                {index < processSteps.length - 1 && (
-                  <div className="hidden md:block absolute top-1/2 -right-3 w-6 h-[1px] bg-white/10 group-hover/item:bg-accent-400/50 transition-colors z-20">
-                    <div className="absolute right-0 top-1/2 -translate-y-1/2 w-0 h-0 border-l-[4px] border-l-white/10 border-t-[3px] border-t-transparent border-b-[3px] border-b-transparent group-hover/item:border-l-accent-400/50 transition-colors" />
+                <div className="border border-white/10 bg-black/35 p-4">
+                  <p className="font-mono text-xs uppercase text-zinc-500">Output</p>
+                  <p className="mt-2 text-sm leading-relaxed text-zinc-200">{step.output}</p>
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {step.tools.map((tool) => (
+                      <span
+                        key={tool}
+                        className="border border-white/10 bg-white/[0.03] px-2.5 py-1.5 font-mono text-[11px] leading-none text-zinc-300 sm:text-xs"
+                      >
+                        {tool}
+                      </span>
+                    ))}
                   </div>
-                )}
+                </div>
               </div>
-            </motion.div>
+            </article>
           </ScrollReveal>
         ))}
       </div>
-
-      {/* Mobile Connection Lines */}
-      <div className="md:hidden flex justify-center gap-2 mt-6">
-        {processSteps.map((_, index) => (
-          <div
-            key={index}
-            className={`
-              h-[2px] flex-1 transition-all duration-500
-              ${hoveredStep && hoveredStep > index 
-                ? 'bg-accent-400' 
-                : 'bg-white/10'
-              }
-            `}
-          />
-        ))}
-      </div>
     </div>
-  );
-};
-
-const ProjectCard: React.FC<{ project: Project; index: number }> = ({ project, index }) => {
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-  const rotateX = useTransform(y, [-100, 100], [15, -15]);
-  const rotateY = useTransform(x, [-100, 100], [-15, 15]);
-
-  const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
-    const rect = event.currentTarget.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-    x.set(event.clientX - centerX);
-    y.set(event.clientY - centerY);
-  };
-
-  const handleMouseLeave = () => {
-    x.set(0);
-    y.set(0);
-  };
-
-  return (
-    <ScrollReveal mode="cinematic" delay={index * 0.1}>
-      <motion.div
-        style={{ rotateX, rotateY, z: 100 }}
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
-        className="relative group h-[500px] bg-black border border-white/10 overflow-hidden transform-style-3d hover:z-20 transition-all duration-500"
-      >
-          {/* Card Image with Parallax */}
-          <div className="absolute inset-0 overflow-hidden">
-             <motion.img 
-                src={project.image} 
-                alt={project.title} 
-                className="w-full h-full object-cover grayscale opacity-60 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-110"
-             />
-             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent opacity-90 group-hover:opacity-60 transition-opacity duration-500" />
-          </div>
-          
-          {/* Holographic Overlay on Hover */}
-          <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-0 group-hover:opacity-20 mix-blend-overlay transition-opacity duration-300 pointer-events-none" />
-          
-          <div className="absolute bottom-0 left-0 w-full p-8 z-10 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-            <div className="flex justify-between items-start mb-4">
-              <h3 className="text-3xl font-light text-white uppercase tracking-tighter group-hover:text-accent-400 transition-colors">{project.title}</h3>
-              <div className="bg-white/10 p-2 rounded-full backdrop-blur-md opacity-0 group-hover:opacity-100 transition-all duration-500 delay-100">
-                 <ExternalLink size={16} />
-              </div>
-            </div>
-            
-            <div className="h-[1px] w-full bg-white/20 mb-4 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
-
-            <p className="text-zinc-200 text-sm mb-6 leading-relaxed font-light line-clamp-2 group-hover:line-clamp-none transition-all">{project.description}</p>
-            
-            <div className="flex flex-wrap gap-2">
-              {project.tags.map((tag: string) => (
-                <span key={tag} className="text-[9px] uppercase tracking-widest text-zinc-300 bg-white/5 border border-white/10 px-2 py-1 rounded">
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </div>
-      </motion.div>
-    </ScrollReveal>
   );
 };
 

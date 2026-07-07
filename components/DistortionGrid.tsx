@@ -121,7 +121,7 @@ const CinematicMetrics: React.FC = () => {
       <div className="relative z-10 max-w-7xl mx-auto px-6">
          <ScrollReveal mode="dolly">
             <div className="mb-20 text-center">
-                <h2 className="text-zinc-300 font-mono text-xs tracking-[0.5em] uppercase mb-4 animate-pulse">System Diagnostics</h2>
+                <h2 className="text-zinc-300 font-mono text-sm tracking-[0.35em] uppercase mb-4 animate-pulse">System Diagnostics</h2>
                 <h3 className="text-5xl md:text-7xl font-bold text-white tracking-tighter mix-blend-difference">
                     LIVE TELEMETRY
                 </h3>

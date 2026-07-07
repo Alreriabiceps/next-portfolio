@@ -41,22 +41,27 @@ export interface ChatMessage {
 
 export interface BlogPost {
   id: number;
+  category: string;
   title: string;
+  deck: string;
   excerpt: string;
   date: string;
   readTime: string;
   tags: string[];
   image: string;
+  content: {
+    heading: string;
+    paragraphs: string[];
+  }[];
 }
 
 export enum SectionId {
   HERO = 'hero',
   ABOUT = 'about',
-  FEATURED = 'featured', // New Carousel
-  EXPERIENCE = 'experience',
   EXPERTISE = 'expertise',
-  CREATIVE = 'creative', // New Ultra Cool Section
-  PROJECTS = 'projects',
+  APPS = 'apps',
+  EXPERIENCE = 'experience',
+  DESIGN = 'design',
   CONTACT = 'contact'
 }
 
