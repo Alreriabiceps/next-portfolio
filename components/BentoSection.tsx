@@ -60,6 +60,15 @@ const BentoSection: React.FC = () => {
                     <div className="flex-1">
                         <h3 className="text-2xl font-light text-white mb-1">Full Stack Developer</h3>
                         <p className="text-xs text-zinc-400 font-mono uppercase tracking-wider">Russelle Roxas</p>
+                        <a
+                          href="https://rrlabs.digital/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="mt-2 inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-accent-400 transition-colors hover:text-white"
+                        >
+                          Founder · RR Labs
+                          <ArrowUpRight size={12} />
+                        </a>
                     </div>
                 </div>
                 <p className="text-zinc-300 leading-relaxed font-light">
@@ -187,28 +196,42 @@ const BentoSection: React.FC = () => {
                  <a href="https://www.linkedin.com/in/rroxas121709/" target="_blank" rel="noopener noreferrer" className="text-zinc-300 hover:text-white transition-colors hover:scale-125 transform duration-200 p-2 rounded-lg hover:bg-white/5" title="LinkedIn">
                     <Linkedin size={20} />
                  </a>
+                 <a href="https://rrlabs.digital/" target="_blank" rel="noopener noreferrer" className="text-zinc-300 hover:text-white transition-colors hover:scale-125 transform duration-200 p-2 rounded-lg hover:bg-white/5" title="RR Labs">
+                    <Globe size={20} />
+                 </a>
                  <a href="https://discord.com/users/your-discord-id" target="_blank" rel="noopener noreferrer" className="text-zinc-300 hover:text-white transition-colors hover:scale-125 transform duration-200 p-2 rounded-lg hover:bg-white/5" title="Discord">
                     <DiscordIcon size={20} />
                  </a>
              </div>
           </BentoCard>
 
-          {/* Stats */}
+          {/* RR Labs */}
           <BentoCard className="md:col-span-2 md:row-span-1 bg-zinc-900/40" delay={0.4}>
-            <div className="grid grid-cols-3 gap-4 h-full items-center divide-x divide-white/5">
-                <div className="text-center px-2 group-hover:scale-105 transition-transform">
-                    <h4 className="text-3xl font-light text-white">05</h4>
-                    <p className="text-xs text-zinc-300 uppercase mt-2 tracking-wider">Years</p>
+            <a
+              href="https://rrlabs.digital/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex h-full items-center justify-between gap-6"
+            >
+              <div className="min-w-0">
+                <div className="mb-3 flex items-center gap-2">
+                  <Globe size={14} className="text-accent-400" />
+                  <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-accent-400">
+                    Company
+                  </p>
                 </div>
-                <div className="text-center px-2 group-hover:scale-105 transition-transform delay-75">
-                    <h4 className="text-3xl font-light text-white">52</h4>
-                    <p className="text-xs text-zinc-300 uppercase mt-2 tracking-wider">Projects</p>
-                </div>
-                <div className="text-center px-2 group-hover:scale-105 transition-transform delay-150">
-                    <h4 className="text-3xl font-light text-white">100<span className="text-sm">%</span></h4>
-                    <p className="text-xs text-zinc-300 uppercase mt-2 tracking-wider">Uptime</p>
-                </div>
-            </div>
+                <h4 className="text-2xl font-light text-white transition-colors group-hover:text-accent-400">
+                  RR Labs
+                </h4>
+                <p className="mt-2 max-w-md text-sm font-light leading-relaxed text-zinc-400">
+                  Premium web development agency for business websites, client delivery, and modern full-stack builds.
+                </p>
+              </div>
+              <div className="hidden shrink-0 items-center gap-2 border border-white/10 px-4 py-2 font-mono text-[10px] uppercase tracking-wider text-zinc-300 transition-colors group-hover:border-accent-400/40 group-hover:text-accent-400 sm:flex">
+                Visit Site
+                <ArrowUpRight size={12} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </div>
+            </a>
           </BentoCard>
 
         </div>

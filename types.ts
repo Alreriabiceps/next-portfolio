@@ -6,6 +6,15 @@ export interface Project {
   tags: string[];
   link: string;
   image: string;
+  locked?: boolean;
+  tagline?: string;
+  highlights?: string[];
+  screenshots?: string[];
+  about?: string[];
+  sections?: {
+    title: string;
+    body: string;
+  }[];
 }
 
 export interface Skill {
@@ -22,6 +31,7 @@ export interface Experience {
   period: string;
   description: string;
   technologies: string[];
+  link?: string;
 }
 
 export interface Testimonial {

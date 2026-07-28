@@ -123,12 +123,112 @@ const JestIcon = ({ size = 16, className = "" }: { size?: number; className?: st
 
 export const WEB_APP_PROJECTS: Project[] = [
   {
+    id: 104,
+    title: "AGILA",
+    tagline: "Adaptive · Gamified · Interactive Learning Assessments",
+    description:
+      "AI-powered gamified learning for students and teachers. Teachers generate questions with AI, schedule weekly tests, and track Bloom's-aligned progress. Students compete on leaderboards, join duo/trio/squad modes, and battle in a ranked turn-based card duel where every card is a question.",
+    tags: ["React", "Node.js", "Socket.io", "AI", "Gamification", "EdTech"],
+    link: "https://alreria.vercel.app/",
+    image: "/projects/agila/cover.png",
+    locked: false,
+    highlights: [
+      "AI question generation for teachers",
+      "Weekly tests with live leaderboards & ranking",
+      "Co-op modes: Duo, Trio, and Squad of 5",
+      "Ranked card duel — turn-based question battles",
+      "Bloom's Taxonomy analytics & student insights",
+    ],
+    about: [
+      "AGILA is a gamified learning platform built for classrooms. Teachers use AI to generate questions, organize weekly assessments, and monitor student progress with Bloom's Taxonomy insights.",
+      "Students join weekly tests, climb leaderboards, and play competitive or cooperative modes — including duo, trio, and five-player squads.",
+      "The standout mode is Ranked Card Duel: a turn-based battle where each card is a question. Players choose which card from their hand to play, challenge their opponent, and fight for ranking.",
+    ],
+    sections: [
+      {
+        title: "For Teachers",
+        body: "Generate questions with AI, build subject banks, schedule weekly tests, manage students, and review analytics across performance, retention, and Bloom's accuracy.",
+      },
+      {
+        title: "For Students",
+        body: "Take weekly lab tests, track personal ranking, join crew challenges, and compete in gamified modes that turn assessments into active play.",
+      },
+      {
+        title: "Ranked Card Duel",
+        body: "Two players face off with question cards. On your turn you pick a card from your hand, ask the challenge, and continue until one player claims the match — strategy meets knowledge.",
+      },
+    ],
+    screenshots: [
+      "/projects/agila/screenshots/screenshot-1785205690085.png",
+      "/projects/agila/screenshots/screenshot-1785205710665.png",
+      "/projects/agila/screenshots/screenshot-1785205730306.png",
+      "/projects/agila/screenshots/screenshot-1785205739820.png",
+      "/projects/agila/screenshots/screenshot-1785205753786.png",
+      "/projects/agila/screenshots/screenshot-1785205834529.png",
+      "/projects/agila/screenshots/screenshot-1785205869402.png",
+      "/projects/agila/screenshots/screenshot-1785205909092.png",
+      "/projects/agila/screenshots/screenshot-1785205984310.png",
+      "/projects/agila/screenshots/screenshot-1785206015712.png",
+      "/projects/agila/screenshots/screenshot-1785206031062.png",
+      "/projects/agila/screenshots/screenshot-1785206053792.png",
+      "/projects/agila/screenshots/screenshot-1785206107502.png",
+      "/projects/agila/screenshots/screenshot-1785206139166.png",
+    ],
+  },
+  {
+    id: 105,
+    title: "Internship Portal",
+    tagline: "Connect · Manage · Grow",
+    description:
+      "A centralized platform that connects students, companies, and administrators — from discovering internships and posting opportunities to verifying companies and tracking applications.",
+    tags: ["React", "Node.js", "MongoDB", "Express", "EdTech", "Portal"],
+    link: "https://ecainternship.vercel.app/",
+    image: "/projects/internship/cover.png",
+    locked: false,
+    highlights: [
+      "Student portal for profiles, skills, and applications",
+      "Company discovery with industry filters",
+      "Internship postings and opportunity browsing",
+      "Admin dashboard for students, companies, and approvals",
+      "Messaging and match workflows between talent and teams",
+    ],
+    about: [
+      "Internship Portal is a multi-role platform built to streamline how students find internships, how companies discover talent, and how administrators manage the full pipeline.",
+      "Students build rich profiles with skills, academic info, and readiness status, then explore companies and open postings. Companies publish opportunities and connect with candidates. Admins oversee users, verify organizations, and keep operations moving.",
+      "The goal is one place for connection, posting, verification, and growth — instead of scattered spreadsheets and disconnected tools.",
+    ],
+    sections: [
+      {
+        title: "For Students",
+        body: "Create a complete profile, showcase technical and soft skills, browse companies and internships, track matches, and message recruiters from a dedicated student portal.",
+      },
+      {
+        title: "For Companies",
+        body: "Post internship opportunities, explore candidate profiles, and connect with students who fit the role — with a clear path from discovery to outreach.",
+      },
+      {
+        title: "For Administrators",
+        body: "Manage students and companies, review pending approvals, verify organizations, whitelist talent, and monitor portal activity from a centralized admin dashboard.",
+      },
+    ],
+    screenshots: [
+      "/projects/internship/screenshots/screenshot-1785206896511.png",
+      "/projects/internship/screenshots/screenshot-1785206916091.png",
+      "/projects/internship/screenshots/screenshot-1785206941235.png",
+      "/projects/internship/screenshots/screenshot-1785206977641.png",
+      "/projects/internship/screenshots/screenshot-1785206992625.png",
+      "/projects/internship/screenshots/screenshot-1785207045639.png",
+      "/projects/internship/screenshots/screenshot-1785207062684.png",
+    ],
+  },
+  {
     id: 101,
     title: "Payment NGNair",
     description: "A fintech platform for digital payments, POS management, merchant onboarding, customer operations, inventory tracking, and marketplace workflows.",
     tags: ["Next.js", "NestJS", "GraphQL", "PostgreSQL", "FinTech"],
     link: "#",
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1200&q=80"
+    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1200&q=80",
+    locked: true,
   },
   {
     id: 102,
@@ -136,7 +236,8 @@ export const WEB_APP_PROJECTS: Project[] = [
     description: "An AI legal rights analysis app that summarizes submitted cases and surfaces nearby lawyers, attorneys, government offices, and support resources.",
     tags: ["Next.js", "Firebase", "AI", "LegalTech", "Case Analysis"],
     link: "#",
-    image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1200&q=80"
+    image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1200&q=80",
+    locked: true,
   },
   {
     id: 103,
@@ -144,16 +245,9 @@ export const WEB_APP_PROJECTS: Project[] = [
     description: "A business finder and recommendation tool built for Byte Forward Hackathon, helping users discover relevant local businesses through smarter search flows.",
     tags: ["React", "Express", "Node.js", "MongoDB", "REST API"],
     link: "#",
-    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80"
+    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80",
+    locked: true,
   },
-  {
-    id: 104,
-    title: "AGILA",
-    description: "A gamified learning assessment system with exams, real-time leaderboards, score multipliers, and interactive card mechanics for student engagement.",
-    tags: ["React", "Node.js", "Socket.io", "MongoDB", "Gamification"],
-    link: "#",
-    image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1200&q=80"
-  }
 ];
 
 export const WEB_DESIGN_PROJECTS: Project[] = [

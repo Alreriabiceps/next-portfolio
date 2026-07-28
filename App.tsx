@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
-import { Github, Linkedin, Mail, ChevronDown, Download, Search, Palette, Zap, CheckCircle, Rocket, Briefcase } from 'lucide-react';
+import { Github, Linkedin, Mail, ChevronDown, Download, Search, Palette, Zap, CheckCircle, Rocket, Briefcase, Globe, ArrowUpRight } from 'lucide-react';
 import ThreeBackground from './components/ThreeBackground';
 import AiAssistant from './components/AiAssistant';
 import BentoSection from './components/BentoSection';
@@ -235,14 +235,15 @@ function App() {
                         </h2>
                     </div>
                     <div className="flex justify-center gap-12 mb-16">
-                       <SocialLink href="#" icon={<Github />} label="Github" />
-                       <SocialLink href="#" icon={<Linkedin />} label="LinkedIn" />
-                       <SocialLink href="#" icon={<Mail />} label="Email" />
+                       <SocialLink href="https://github.com/Alreriabiceps" icon={<Github />} label="Github" />
+                       <SocialLink href="https://www.linkedin.com/in/rroxas121709/" icon={<Linkedin />} label="LinkedIn" />
+                       <SocialLink href="https://rrlabs.digital/" icon={<Globe />} label="RR Labs" />
+                       <SocialLink href="mailto:Russelleroxas11@gmail.com" icon={<Mail />} label="Email" />
                     </div>
                     <motion.a 
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        href="mailto:contact@example.com"
+                        href="mailto:Russelleroxas11@gmail.com"
                         className="inline-block border border-white/20 bg-white/5 px-16 py-5 rounded-sm text-zinc-100 hover:text-black hover:bg-white transition-all uppercase tracking-[0.3em] text-xs relative overflow-hidden group shadow-[0_0_40px_rgba(0,0,0,0.5)]"
                     >
                         <span className="relative z-10 font-bold">Transmit Message</span>
@@ -276,6 +277,8 @@ function App() {
 const SocialLink = ({ href, icon, label }: { href: string, icon: React.ReactNode, label: string }) => (
   <motion.a 
     href={href}
+    target={href.startsWith('mailto:') ? undefined : '_blank'}
+    rel={href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
     whileHover={{ y: -5, color: "#38bdf8" }}
     className="group flex flex-col items-center gap-4 text-zinc-300 transition-colors"
   >
@@ -356,7 +359,19 @@ const CareerLog: React.FC = () => {
                           {job.role}
                         </h3>
                         <p className="mt-3 break-words text-lg font-light leading-snug text-zinc-300">
-                          {job.company}
+                          {job.link ? (
+                            <a
+                              href={job.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-2 transition-colors hover:text-accent-400"
+                            >
+                              {job.company}
+                              <ArrowUpRight size={16} className="shrink-0 opacity-60" />
+                            </a>
+                          ) : (
+                            job.company
+                          )}
                         </p>
                       </div>
 
