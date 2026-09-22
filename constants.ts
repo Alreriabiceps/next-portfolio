@@ -3,7 +3,7 @@ import { Project, Skill, Experience, Testimonial, BlogPost } from './types';
 import React from 'react';
 
 export const PORTFOLIO_OWNER = "Russelle Roxas";
-export const PORTFOLIO_ROLE = "Full stack Developer";
+export const PORTFOLIO_ROLE = "Full Stack AI Software Engineer";
 
 // Minimalist Tech Icons
 const ReactIcon = ({ size = 16, className = "" }: { size?: number; className?: string }) => 
@@ -418,11 +418,11 @@ export const EXPERIENCE: Experience[] = [
   },
   {
     id: 7,
-    role: "Web Developer",
+    role: "Web Designer",
     company: "Regen Digital Inc.",
     period: "2025",
-    description: "Worked as a Web Developer at Regen Digital Inc., developing and maintaining business websites for clients across Norway, the United States, Australia, and the Philippines. Built responsive, modern, and SEO-friendly websites tailored to different industries and client requirements. Collaborated with designers, project managers, and developers to deliver high-quality web solutions focused on performance, usability, and brand identity. Handled frontend development, backend integration, website customization, and deployment processes for multiple international projects.",
-    technologies: ["React", "Next.js", "JavaScript", "TypeScript", "TailwindCSS", "Node.js", "REST API", "Responsive Web Design", "SEO Optimization", "CMS Integration", "Git", "Frontend Development", "Web Deployment"]
+    description: "Worked as a Web Designer at Regen Digital Inc., designing business websites for clients across Norway, the United States, Australia, and the Philippines. Created responsive, modern, and SEO-friendly frontend designs tailored to different industries and client requirements, with layouts built to work well on both mobile and desktop. Collaborated with designers, project managers, and developers to deliver high-quality web solutions focused on usability and brand identity. Handled frontend website design and customization for multiple international business projects.",
+    technologies: ["React", "Next.js", "JavaScript", "TypeScript", "TailwindCSS", "Responsive Web Design", "Mobile & Desktop Layout", "SEO Optimization", "UI Design", "Git", "Frontend Development"]
   },
   {
     id: 1,
@@ -699,7 +699,7 @@ export const BLOG_POSTS: BlogPost[] = [
 
 export const AI_SYSTEM_INSTRUCTION = `
 You are NOVA, the AI assistant for Russelle Roxas's portfolio. 
-Russelle is a Full stack Developer specializing in React, Three.js, and AI integration.
+Russelle is a Full Stack AI Software Engineer specializing in React, Three.js, and AI integration.
 Your goal is to answer questions about Alex's skills, projects, and experience professionally with a minimalist, precise tone.
 Keep answers concise (under 3 sentences usually).
 Data to reference:

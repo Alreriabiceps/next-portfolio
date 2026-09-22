@@ -8,12 +8,13 @@ import BentoSection from './components/BentoSection';
 import BlogPage from './components/BlogPage';
 import TelemetryPage from './components/TelemetryPage';
 import ProjectCarousel from './components/ProjectCarousel';
-import WebDesignSection from './components/WebDesignSection';
 import ExpertiseSection from './components/ExpertiseSection';
 import { TextReveal, GlitchText } from './components/TextReveal';
 import { ScrollReveal } from './components/ScrollReveal';
 import { EXPERIENCE, PORTFOLIO_OWNER, PORTFOLIO_ROLE } from './constants';
 import { SectionId, Page } from './types';
+
+const VISIBLE_SECTIONS = Object.values(SectionId).filter((item) => item !== SectionId.DESIGN);
 
 function App() {
   const { scrollY } = useScroll();
@@ -41,7 +42,7 @@ function App() {
   useEffect(() => {
     if (currentPage !== Page.HOME) return;
     const handleScroll = () => {
-      const sections = Object.values(SectionId);
+      const sections = VISIBLE_SECTIONS;
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
@@ -87,7 +88,7 @@ function App() {
           
           <div className="hidden md:flex items-center gap-10">
             <div className="flex gap-8">
-              {Object.values(SectionId).map((item) => (
+              {VISIBLE_SECTIONS.map((item) => (
                 <button
                   key={item}
                   onClick={() => scrollToSection(item)}
@@ -221,8 +222,6 @@ function App() {
                 <div className="absolute left-1/2 top-1/2 h-px w-[min(720px,80vw)] -translate-x-1/2 bg-gradient-to-r from-transparent via-accent-400/25 to-transparent" />
                 <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-black" />
               </section>
-
-              <WebDesignSection />
 
               {/* CONTACT */}
               <section id="contact" className="py-40 px-6 mb-10 relative overflow-hidden">
